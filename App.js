@@ -6,7 +6,8 @@ import { styles } from './src/theme/appTheme';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View style={{flex:1}}>
+      <StatusBar translucent={false} style={'light'}/>
       <Main/>
     </View>
   );
