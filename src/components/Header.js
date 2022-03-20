@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
-import {  Text, View } from 'react-native'
+import React, { useState, useContext } from 'react'
+import {  Text, View ,useColorScheme } from 'react-native'
 import { styles } from '../theme/appTheme'
 import Switch from 'expo-dark-mode-switch';
 import { MaterialIcons } from '@expo/vector-icons';
+import { ThemeContext } from '../context/ThemeContext';
 
 
 export const Header = () => {
 
-    const [dark, setDark] = useState(false)
+    const { dark, setDark } = useContext(ThemeContext);
 
     return (
         <View style = {styles.viewToggle}>
@@ -17,5 +18,9 @@ export const Header = () => {
                     </View>
                     <Switch value={dark} onChange={dark => setDark(dark)} style={{marginRight:'2%'}}/>
         </View>
+
     )
+
 }
+
+

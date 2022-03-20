@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import { View, Text, Pressable, TouchableOpacity} from 'react-native'
 import AppLoading from 'expo-app-loading';
 import { useFonts, SecularOne_400Regular } from '@expo-google-fonts/secular-one';
@@ -8,6 +8,7 @@ import { styles } from '../theme/appTheme';
 import { Header } from '../components/Header';
 import { useCalendario } from '../hooks/useCalendario';
 import { DateChanger } from '../components/DateChanger';
+import { useTheme } from 'react-native-paper';
 
 
 
@@ -20,8 +21,9 @@ export const Main = () => {
 
     })
 
-    const [dark, setDark] = useState(false)
+    const { colors } = useTheme();
     const {date,diaSemana,weekDays,monthsYear,modFecha,tapFecha,stopTimer,resetFecha}  = useCalendario()
+
 
     if (!fontsLoaded) {
         return <AppLoading />;
@@ -29,7 +31,7 @@ export const Main = () => {
 
     else{
         return (
-            <View style={styles.container}>
+            <View style={{...styles.container, backgroundColor: colors.containerBack}}>
                 <Header/>
 
                 <View style={styles.viewTexto}>
