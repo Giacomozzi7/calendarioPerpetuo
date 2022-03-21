@@ -11,6 +11,7 @@ import { ThemeContext } from '../context/ThemeContext';
 import { useFonts, SecularOne_400Regular } from '@expo-google-fonts/secular-one';
 import { SourceSansPro_600SemiBold, SourceSansPro_700Bold} from '@expo-google-fonts/source-sans-pro';
 import { SawarabiMincho_400Regular } from '@expo-google-fonts/sawarabi-mincho';
+import { KeyboardAvoidingView } from 'react-native';
 
 
 
@@ -25,7 +26,7 @@ export const Main = () => {
 
     //Extrae el tema y variables de useCalendario
     const { scheme } = useContext(ThemeContext);
-    const {date,diaSemana,weekDays,monthsYear,modFecha,tapFecha,stopTimer,resetFecha}  = useCalendario()
+    const {date,diaSemana,weekDays,monthsYear,modFecha,tapFecha,stopTimer,resetFecha, setDate}  = useCalendario()
     const colores = scheme.colors
     
     if (!fontsLoaded) {
@@ -41,14 +42,19 @@ export const Main = () => {
                     <Text style={{...styles.textonormal, color: colores.textoNormal}}>Tap en año para modificar manualmente</Text>
                 </View>
 
+                
+
                 <View style={styles.viewFecha}>
-                    <DateChanger tipo={'dia'} velo={40} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha}/>
-                    <DateChanger tipo={'mes'} velo={70} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha}/>
-                    <DateChanger tipo={'year'} velo={1} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha}/>  
+                    <DateChanger tipo={'dia'} velo={40} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha} setDate={setDate}/>
+                    <DateChanger tipo={'mes'} velo={70} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha} setDate={setDate}/>
+                    <DateChanger tipo={'year'} velo={1} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha} setDate={setDate}/>  
                 </View>
 
                 <View style={styles.viewDia}>
-                    <Text style={{...styles.textoDia, ...colores.textoDia}}>{weekDays[diaSemana]}</Text>
+                    { date['year'] > 999
+                        ? <Text style={{...styles.textoDia, ...colores.textoDia}}>{weekDays[diaSemana]}</Text>
+                        : <Text style={{...styles.textonormal, color: colores.textoNormal}}>Se debe ingresar un año de 4 dígitos</Text>
+                    }
                 </View>
 
                 <View style={styles.viewBoton}>
