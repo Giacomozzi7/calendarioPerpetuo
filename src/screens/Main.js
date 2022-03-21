@@ -1,14 +1,16 @@
-import React, { useRef, useState, useContext } from 'react'
-import { View, Text, Pressable, TouchableOpacity} from 'react-native'
+import React, { useContext } from 'react'
+import { View, Text, TouchableOpacity} from 'react-native'
 import AppLoading from 'expo-app-loading';
-import { useFonts, SecularOne_400Regular } from '@expo-google-fonts/secular-one';
-import { SourceSansPro_600SemiBold, SourceSansPro_700Bold} from '@expo-google-fonts/source-sans-pro';
-import { SawarabiMincho_400Regular } from '@expo-google-fonts/sawarabi-mincho';
 import { styles } from '../theme/appTheme';
 import { Header } from '../components/Header';
 import { useCalendario } from '../hooks/useCalendario';
 import { DateChanger } from '../components/DateChanger';
-import { useTheme } from 'react-native-paper';
+import { ThemeContext } from '../context/ThemeContext';
+
+//Fuentes de Google
+import { useFonts, SecularOne_400Regular } from '@expo-google-fonts/secular-one';
+import { SourceSansPro_600SemiBold, SourceSansPro_700Bold} from '@expo-google-fonts/source-sans-pro';
+import { SawarabiMincho_400Regular } from '@expo-google-fonts/sawarabi-mincho';
 
 
 
@@ -21,21 +23,22 @@ export const Main = () => {
 
     })
 
-    const { colors } = useTheme();
+    //Extrae el tema y variables de useCalendario
+    const { scheme } = useContext(ThemeContext);
     const {date,diaSemana,weekDays,monthsYear,modFecha,tapFecha,stopTimer,resetFecha}  = useCalendario()
-
-
+    const colores = scheme.colors
+    
     if (!fontsLoaded) {
         return <AppLoading />;
     }
 
     else{
         return (
-            <View style={{...styles.container, backgroundColor: colors.containerBack}}>
+            <View style={{...styles.container, backgroundColor: colores.containerBack}}>
                 <Header/>
 
                 <View style={styles.viewTexto}>
-                    <Text style={styles.textonormal}>Tap en año para modificar manualmente</Text>
+                    <Text style={{...styles.textonormal, color: colores.textoNormal}}>Tap en año para modificar manualmente</Text>
                 </View>
 
                 <View style={styles.viewFecha}>
@@ -45,11 +48,11 @@ export const Main = () => {
                 </View>
 
                 <View style={styles.viewDia}>
-                    <Text style={styles.textoDia}>{weekDays[diaSemana]}</Text>
+                    <Text style={{...styles.textoDia, ...colores.textoDia}}>{weekDays[diaSemana]}</Text>
                 </View>
 
                 <View style={styles.viewBoton}>
-                    <TouchableOpacity style={styles.touchRes} onPress = {resetFecha}><Text style={{...styles.textoFecha,fontSize:18, color:'white'}}>Reestablecer</Text></TouchableOpacity>
+                    <TouchableOpacity style={{...styles.touchRes, backgroundColor: colores.botonBack}} onPress = {resetFecha}><Text style={{...styles.textoFecha,fontSize:18, color:'white'}}>Reestablecer</Text></TouchableOpacity>
                 </View>
 
             </View>

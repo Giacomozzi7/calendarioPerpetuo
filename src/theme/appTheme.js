@@ -11,27 +11,23 @@ export const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
         backgroundColor:'#E0E0E0',
+        elevation:5
 
     },
     viewTexto:{
         flex:0.08,
         alignItems:'center',
         justifyContent:'flex-end',
-        //backgroundColor:'yellow'
     },
     textonormal:{
         fontFamily: 'SecularOne_400Regular',
         fontSize: 18,
-        color:'#545454'
     },
     viewFecha:{
-        flex: 0.25,
+        flex: 0.3,
         flexDirection:'row',
-        //backgroundColor:'red',
         justifyContent:'center',
         alignItems:'center',
-        //backgroundColor:'#E8E8E8'
-
     },
     columnaFecha: {
         flexDirection:'column',
@@ -41,25 +37,19 @@ export const styles = StyleSheet.create({
     textoFecha:{
         fontSize:30,
         fontFamily:'SecularOne_400Regular',
-        color:'#C41E3A'
     },
     viewDia:{
-        flex:0.25,
-        //backgroundColor:'green',
+        flex:0.16,
         justifyContent:'center',
         alignItems:'center',
     },
     textoDia:{
         fontSize:60,
-        fontFamily:'SawarabiMincho_400Regular',
-        color:'#545454',
-        textShadowColor: '#DADADA',
-        textShadowOffset: {width: 2, height: 3},
-        textShadowRadius: 1
+        fontFamily:'SourceSansPro_600SemiBold',
+
     },
     viewBoton:{
-        flex:0.16,
-        //backgroundColor:'purple',
+        flex:0.23,
         alignItems:'center',
         justifyContent:'center'
     },
