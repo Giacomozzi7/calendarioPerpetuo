@@ -64,24 +64,30 @@ export const useCalendario = () => {
         
     }
 
+    //Validacion maximos y minimos mes y year
     if(date['mes'] > 11){date['mes'] = 0}
     if(date['mes'] < 0) {date['mes'] = 11}
 
-
-
-    //Timer OnLongPress
-    var modFecha = (numsigno,tipo,velo) =>{
-        setDate(prev => ({...date, [tipo]: prev[tipo] + numsigno}))
-        timer = setTimeout(() => {modFecha(numsigno,tipo,velo)},velo);
-    };
-
-    var tapFecha = (numsigno,tipo) =>{
-        setDate({...date, [tipo]: date[tipo] + numsigno})
-    }
+    if(date['year'] > 9999){date['year'] = 1000}
 
     const stopTimer = () => {
-       clearTimeout(timer);
-    }
+        clearTimeout(timer);
+     }
+
+    //Timer OnLongPress
+    var modFecha = (numsigno,tipo,velo,hold) =>{
+        setDate(prev => ({
+            ...date,
+            //Evita que el hold del boton decremente year por debajo de 1000
+            [tipo]: tipo ==='year' & prev[tipo] <= 1000 & numsigno < 1
+                ? prev[tipo]
+                : prev[tipo] + numsigno 
+                }))
+        //Si el boton se esta presionando (hold), llama nuevamente a la funcion mediante timer
+        hold && (timer = setTimeout(() => {modFecha(numsigno,tipo,velo,true)},velo))
+
+    };
+
 
     const resetFecha = () =>{
         setDate({
@@ -101,7 +107,6 @@ export const useCalendario = () => {
         monthsYear,
         diaSemana,
         modFecha,
-        tapFecha,
         stopTimer,
         resetFecha
     }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { View, Text, TouchableOpacity} from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView} from 'react-native'
 import AppLoading from 'expo-app-loading';
 import { styles } from '../theme/appTheme';
 import { Header } from '../components/Header';
@@ -26,7 +26,7 @@ export const Main = () => {
 
     //Extrae el tema y variables de useCalendario
     const { scheme } = useContext(ThemeContext);
-    const {date,diaSemana,weekDays,monthsYear,modFecha,tapFecha,stopTimer,resetFecha, setDate}  = useCalendario()
+    const {date,diaSemana,weekDays,monthsYear,modFecha,stopTimer,resetFecha, setDate}  = useCalendario()
     const colores = scheme.colors
     
     if (!fontsLoaded) {
@@ -45,9 +45,9 @@ export const Main = () => {
                 
 
                 <View style={styles.viewFecha}>
-                    <DateChanger tipo={'dia'} velo={40} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha} setDate={setDate}/>
-                    <DateChanger tipo={'mes'} velo={70} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha} setDate={setDate}/>
-                    <DateChanger tipo={'year'} velo={1} date={date} monthsYear={monthsYear} stopTimer={stopTimer} tapFecha={tapFecha} modFecha={modFecha} setDate={setDate}/>  
+                    <DateChanger tipo={'dia'} velo={40} date={date} monthsYear={monthsYear} stopTimer={stopTimer} modFecha={modFecha} setDate={setDate}/>
+                    <DateChanger tipo={'mes'} velo={70} date={date} monthsYear={monthsYear} stopTimer={stopTimer} modFecha={modFecha} setDate={setDate}/>
+                    <DateChanger tipo={'year'} velo={1} date={date} monthsYear={monthsYear} stopTimer={stopTimer} modFecha={modFecha} setDate={setDate}/>  
                 </View>
 
                 <View style={styles.viewDia}>
