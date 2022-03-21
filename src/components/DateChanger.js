@@ -28,7 +28,7 @@ export const DateChanger = ({tipo,velo, date, monthsYear, stopTimer, modFecha,se
             tipo == 'mes' 
                 ? <Text style={{...styles.textoFecha, color: colores.textoFecha}}>{monthsYear[date[tipo]]}</Text> 
                 : tipo == 'year'
-                  ? <TextInput style={{...styles.textoFecha, color: colores.textoFecha}} onChangeText={(year) => onChangeYear(year) } value={date[tipo].toString()} maxLength={4} keyboardType='number-pad' />
+                  ? <TextInput style={{...styles.textoFecha, color: colores.textoFecha}} onChangeText={(year) => onChangeYear(year) } value={date[tipo].toString()} maxLength={4} keyboardType='number-pad' selectTextOnFocus={true} />
                   : <Text style={{...styles.textoFecha, color: colores.textoFecha}}>{date[tipo]}</Text>
         }
         

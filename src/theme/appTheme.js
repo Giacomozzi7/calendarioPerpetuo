@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     viewDia:{
         flex:0.16,
         justifyContent:'center',
-        alignItems:'center',
+        alignItems:'center'
     },
     textoDia:{
         fontSize:60,

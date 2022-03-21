@@ -6,6 +6,7 @@ import { Header } from '../components/Header';
 import { useCalendario } from '../hooks/useCalendario';
 import { DateChanger } from '../components/DateChanger';
 import { ThemeContext } from '../context/ThemeContext';
+import { MaterialIcons } from '@expo/vector-icons';
 
 //Fuentes de Google
 import { useFonts, SecularOne_400Regular } from '@expo-google-fonts/secular-one';
@@ -53,7 +54,10 @@ export const Main = () => {
                 <View style={styles.viewDia}>
                     { date['year'] > 999
                         ? <Text style={{...styles.textoDia, ...colores.textoDia}}>{weekDays[diaSemana]}</Text>
-                        : <Text style={{...styles.textonormal, color: colores.textoNormal}}>Se debe ingresar un año de 4 dígitos</Text>
+                        : <>
+                            <MaterialIcons name="error" size={40} color={'#ffcc00'} style={{marginBottom:'2%'}} />
+                            <Text style={{...styles.textonormal, color: colores.textoNormal}}>Se debe ingresar un año de 4 dígitos</Text>
+                        </>
                     }
                 </View>
 
