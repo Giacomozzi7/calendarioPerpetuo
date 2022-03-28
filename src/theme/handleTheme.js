@@ -11,15 +11,12 @@ export const handleTheme = () => {
           headerBack: "#FAFAFA",
           textoNormal: '#454545',
           tituloHeader: '#000000',
-          textoFecha: '#C41E3A',
-          botonBack: '#C41E3A',
+          textoFecha: '#BF0600',
+          botonBack: '#BF0600',
           flecha: '#000000',
-          textoDia:{
-            color:'#454545',
-            //textShadowColor: '#424242',
-            //textShadowOffset: {width: 1, height: 1},
-            //textShadowRadius: 1
-          }
+          textoDia:'#BF0600',
+
+
         },
       };
       
@@ -30,18 +27,12 @@ export const handleTheme = () => {
           ...DefaultTheme.colors,
           containerBack: '#121212',
           headerBack: "#161616",
-          textoNormal: '#c0c0c0',
-          tituloHeader: '#e1e1e1',
+          textoNormal: '#dcdcdc',
+          tituloHeader: '#dcdcdc',
           textoFecha: '#5559cc',
           botonBack: '#5559cc',
           flecha: '#3f4040',
-          textoDia:{
-            color:'#c0c0c0',
-            //textShadowColor: '#303030',
-            //textShadowOffset: {width: 1, height: 3},
-            //textShadowRadius: 1
-          }
-
+          textoDia:'#5559cc',
         },
     };
 

@@ -1,6 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet} from "react-native";
+import { scale} from 'react-native-size-matters';
 
 export const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
         backgroundColor: '#f7f7f7',
@@ -11,7 +13,7 @@ export const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
         backgroundColor:'#E0E0E0',
-        elevation:5
+        elevation: scale(5)
 
     },
     viewTexto:{
@@ -21,7 +23,7 @@ export const styles = StyleSheet.create({
     },
     textonormal:{
         fontFamily: 'SecularOne_400Regular',
-        fontSize: 18,
+        fontSize: scale(15),
     },
     viewFecha:{
         flex: 0.3,
@@ -32,11 +34,15 @@ export const styles = StyleSheet.create({
     columnaFecha: {
         flexDirection:'column',
         alignItems:'center',
-        margin:'2%'
+        justifyContent:'center',
+        //margin:'0.2%'
     },
     textoFecha:{
-        fontSize:30,
+        fontSize: scale(27),
+        width:    scale(70),
         fontFamily:'SecularOne_400Regular',
+        textAlign:'center'
+        
     },
     viewDia:{
         flex:0.16,
@@ -44,9 +50,8 @@ export const styles = StyleSheet.create({
         alignItems:'center'
     },
     textoDia:{
-        fontSize:60,
+        fontSize:scale(60),
         fontFamily:'SourceSansPro_600SemiBold',
-
     },
     viewBoton:{
         flex:0.23,
@@ -55,8 +60,8 @@ export const styles = StyleSheet.create({
     },
     touchRes:{
         backgroundColor:'#C41E3A',
-        padding:14,
-        borderRadius:5,
+        padding: scale(15),
+        borderRadius:scale(10),
 
         shadowColor: "#000",
         shadowOffset: {
@@ -66,7 +71,14 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.39,
         shadowRadius: 8.30,
 
-        elevation: 13,
+        elevation: scale(13),
+    },
+    textoBoton:{
+        fontFamily:'SecularOne_400Regular',
+        textAlign:'center',
+        fontSize: scale(15),
+        color:'white'
+
     }
 
 })

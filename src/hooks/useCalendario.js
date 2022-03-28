@@ -36,8 +36,6 @@ export const useCalendario = () => {
     //Obtiene dia de la semana
     var fecha = new Date(parseInt(date['year']),date['mes'],date['dia']);
     var diaSemana = fecha.getDay()
-
-
     timer = null;
 
     //Validacion febrero
@@ -65,16 +63,17 @@ export const useCalendario = () => {
     }
 
     //Validacion maximos y minimos mes y year
-    if(date['mes'] > 11){date['mes'] = 0}
-    if(date['mes'] < 0) {date['mes'] = 11}
+    if(date['mes'] > 11){ setDate({...date,mes: 0}) }
+    if(date['mes'] < 0) { setDate({...date,mes: 11}) }
+    if(date['year'] > 9999){ setDate({...date,year: 1000}) }
 
-    if(date['year'] > 9999){date['year'] = 1000}
 
+    //Detiene el timer en onLongPress
     const stopTimer = () => {
         clearTimeout(timer);
      }
 
-    //Timer OnLongPress
+    //Modificador de fecha con onPress y onLongPress
     var modFecha = (numsigno,tipo,velo,hold) =>{
         setDate(prev => ({
             ...date,
@@ -88,7 +87,7 @@ export const useCalendario = () => {
 
     };
 
-
+    //Funcion para reestablecer fecha con el boton
     const resetFecha = () =>{
         setDate({
             ...date,
